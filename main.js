@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize all components
     initNavigation();
     initScrollAnimations();
-    initStrainCards();
     initModal();
+    initCultivationModal();
     initSmoothScrolling();
     initParallaxEffects();
 });
@@ -85,25 +85,217 @@ function initScrollAnimations() {
     });
 }
 
-// Strain cards functionality
-function initStrainCards() {
-    const strainCards = document.querySelectorAll('.strain-card');
-    
-    strainCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const strainType = this.getAttribute('data-strain');
-            openStrainModal(strainType);
-        });
+}
 
-        // Add hover effect
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
-        });
+// Cultivation modal functionality
+function initCultivationModal() {
+    const cultivationBtn = document.getElementById('cultivation-details-btn');
+    const cultivationModal = document.getElementById('cultivation-modal');
+    const cultivationClose = document.getElementById('cultivation-close');
+    const cultivationModalBody = document.getElementById('cultivation-modal-body');
 
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
+    if (cultivationBtn) {
+        cultivationBtn.addEventListener('click', function() {
+            openCultivationModal();
         });
+    }
+
+    if (cultivationClose) {
+        cultivationClose.addEventListener('click', function() {
+            cultivationModal.style.display = 'none';
+        });
+    }
+
+    window.addEventListener('click', function(event) {
+        if (event.target === cultivationModal) {
+            cultivationModal.style.display = 'none';
+        }
     });
+}
+
+function openCultivationModal() {
+    const modal = document.getElementById('cultivation-modal');
+    const modalBody = document.getElementById('cultivation-modal-body');
+    
+    modalBody.innerHTML = `
+        <h2>🍄 Guia Completo de Cultivo de Psilocybe Cubensis</h2>
+        
+        <div class="cultivation-detailed-content">
+            <div class="cultivation-warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p><strong>Aviso Legal:</strong> Este conteúdo é puramente educacional. O cultivo de cogumelos psicodélicos pode ser ilegal em muitas jurisdições. Verifique as leis locais antes de qualquer atividade.</p>
+            </div>
+            
+            <div class="cultivation-section">
+                <h3>🧪 Materiais Necessários</h3>
+                <div class="materials-grid">
+                    <div class="material-category">
+                        <h4>Substrato</h4>
+                        <ul>
+                            <li>Arroz integral</li>
+                            <li>Vermiculita</li>
+                            <li>Farinha de arroz integral</li>
+                            <li>Água destilada</li>
+                        </ul>
+                    </div>
+                    <div class="material-category">
+                        <h4>Equipamentos</h4>
+                        <ul>
+                            <li>Frascos de vidro</li>
+                            <li>Panela de pressão</li>
+                            <li>Seringa estéril</li>
+                            <li>Luvas de látex</li>
+                            <li>Álcool isopropílico</li>
+                        </ul>
+                    </div>
+                    <div class="material-category">
+                        <h4>Ambiente</h4>
+                        <ul>
+                            <li>Caixa de frutificação</li>
+                            <li>Perlita</li>
+                            <li>Termômetro</li>
+                            <li>Higrômetro</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cultivation-section">
+                <h3>🔬 Processo Detalhado</h3>
+                <div class="detailed-stages">
+                    <div class="detailed-stage">
+                        <div class="stage-header">
+                            <span class="stage-icon">1️⃣</span>
+                            <h4>Preparação do Substrato</h4>
+                        </div>
+                        <div class="stage-content">
+                            <p><strong>Duração:</strong> 2-3 horas</p>
+                            <p><strong>Processo:</strong></p>
+                            <ul>
+                                <li>Misture vermiculita, farinha de arroz e água em proporções específicas</li>
+                                <li>Preencha frascos de vidro com a mistura</li>
+                                <li>Esterilize em panela de pressão por 90 minutos</li>
+                                <li>Deixe esfriar completamente em ambiente estéril</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="detailed-stage">
+                        <div class="stage-header">
+                            <span class="stage-icon">2️⃣</span>
+                            <h4>Inoculação</h4>
+                        </div>
+                        <div class="stage-content">
+                            <p><strong>Duração:</strong> 30 minutos</p>
+                            <p><strong>Processo:</strong></p>
+                            <ul>
+                                <li>Trabalhe em ambiente estéril (caixa de luvas ou fluxo laminar)</li>
+                                <li>Injete esporos através da tampa dos frascos</li>
+                                <li>Sele os pontos de injeção com fita micropore</li>
+                                <li>Armazene em local escuro a 24-27°C</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="detailed-stage">
+                        <div class="stage-header">
+                            <span class="stage-icon">3️⃣</span>
+                            <h4>Colonização</h4>
+                        </div>
+                        <div class="stage-content">
+                            <p><strong>Duração:</strong> 2-4 semanas</p>
+                            <p><strong>Processo:</strong></p>
+                            <ul>
+                                <li>Monitore o crescimento do micélio branco</li>
+                                <li>Mantenha temperatura constante (24-27°C)</li>
+                                <li>Evite luz direta</li>
+                                <li>Aguarde colonização completa (100% branco)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="detailed-stage">
+                        <div class="stage-header">
+                            <span class="stage-icon">4️⃣</span>
+                            <h4>Frutificação</h4>
+                        </div>
+                        <div class="stage-content">
+                            <p><strong>Duração:</strong> 1-2 semanas</p>
+                            <p><strong>Processo:</strong></p>
+                            <ul>
+                                <li>Transfira para caixa de frutificação</li>
+                                <li>Mantenha umidade alta (80-95%)</li>
+                                <li>Forneça luz indireta</li>
+                                <li>Ventile 2-3 vezes ao dia</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="detailed-stage">
+                        <div class="stage-header">
+                            <span class="stage-icon">5️⃣</span>
+                            <h4>Colheita</h4>
+                        </div>
+                        <div class="stage-content">
+                            <p><strong>Duração:</strong> Conforme necessário</p>
+                            <p><strong>Processo:</strong></p>
+                            <ul>
+                                <li>Colha antes dos esporos se abrirem</li>
+                                <li>Corte na base com lâmina estéril</li>
+                                <li>Seque imediatamente ou consuma fresco</li>
+                                <li>Prepare para próximas ondas de frutificação</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cultivation-section">
+                <h3>⚠️ Problemas Comuns e Soluções</h3>
+                <div class="problems-grid">
+                    <div class="problem-item">
+                        <h4>🦠 Contaminação</h4>
+                        <p><strong>Sintomas:</strong> Cores verdes, pretas ou azuis no substrato</p>
+                        <p><strong>Solução:</strong> Descarte imediatamente e melhore esterilização</p>
+                    </div>
+                    <div class="problem-item">
+                        <h4>💧 Umidade Baixa</h4>
+                        <p><strong>Sintomas:</strong> Cogumelos rachados ou secos</p>
+                        <p><strong>Solução:</strong> Aumente borrifação e ventilação</p>
+                    </div>
+                    <div class="problem-item">
+                        <h4>🌡️ Temperatura Incorreta</h4>
+                        <p><strong>Sintomas:</strong> Crescimento lento ou parado</p>
+                        <p><strong>Solução:</strong> Ajuste para 24-27°C</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cultivation-section">
+                <h3>🧙‍♂️ Dicas dos Mestres Cultivadores</h3>
+                <div class="tips-container">
+                    <div class="tip-item">
+                        <span class="tip-icon">🧚‍♀️</span>
+                        <p><strong>Paciência é Mágica:</strong> Como as fadas cuidam de suas plantas, o cultivo requer tempo e dedicação. Não apresse o processo.</p>
+                    </div>
+                    <div class="tip-item">
+                        <span class="tip-icon">🍄</span>
+                        <p><strong>Limpeza Ritual:</strong> Mantenha tudo estéril como se fosse um ritual sagrado. Contaminação é o maior inimigo.</p>
+                    </div>
+                    <div class="tip-item">
+                        <span class="tip-icon">🌙</span>
+                        <p><strong>Ambiente Místico:</strong> Crie um ambiente controlado e estável. Os cogumelos são sensíveis às mudanças.</p>
+                    </div>
+                    <div class="tip-item">
+                        <span class="tip-icon">✨</span>
+                        <p><strong>Observação Atenta:</strong> Como um duende guardião, observe diariamente sem perturbar o processo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    modal.style.display = 'block';
 }
 
 // Modal functionality
@@ -122,110 +314,7 @@ function initModal() {
     });
 }
 
-function openStrainModal(strainType) {
-    const modal = document.getElementById('strain-modal');
-    const modalBody = document.getElementById('modal-body');
-    
-    const strainData = {
-        'golden-teacher': {
-            title: 'Golden Teacher',
-            description: 'Uma das variedades mais populares e respeitadas de Psilocybe cubensis.',
-            characteristics: [
-                'Chapéu dourado característico',
-                'Crescimento robusto e confiável',
-                'Efeitos equilibrados e educativos',
-                'Ideal para iniciantes no cultivo'
-            ],
-            potency: 'Moderada (0.63-0.85% psilocibina)',
-            difficulty: 'Fácil',
-            origin: 'Flórida, EUA',
-            details: 'O Golden Teacher é conhecido por proporcionar experiências introspectivas e educativas. Seu nome deriva tanto da coloração dourada quanto da natureza "educativa" dos efeitos relatados.'
-        },
-        'b-plus': {
-            title: 'B+ (Be Positive)',
-            description: 'Variedade extremamente resistente e produtiva, perfeita para cultivadores iniciantes.',
-            characteristics: [
-                'Muito resistente a contaminações',
-                'Crescimento rápido e vigoroso',
-                'Produção abundante',
-                'Adaptável a diferentes condições'
-            ],
-            potency: 'Moderada (0.57-0.78% psilocibina)',
-            difficulty: 'Muito Fácil',
-            origin: 'Desconhecida',
-            details: 'A B+ é uma das variedades mais forgiving para iniciantes, com alta tolerância a erros de cultivo e excelente produtividade.'
-        },
-        'penis-envy': {
-            title: 'Penis Envy',
-            description: 'Variedade distintiva conhecida por sua alta potência e formato único.',
-            characteristics: [
-                'Formato distintivo e único',
-                'Alta concentração de psilocibina',
-                'Crescimento mais lento',
-                'Chapéus que raramente se abrem'
-            ],
-            potency: 'Alta (0.90-1.80% psilocibina)',
-            difficulty: 'Difícil',
-            origin: 'Amazônia (desenvolvida por Terence McKenna)',
-            details: 'Considerada uma das variedades mais potentes, requer experiência em cultivo devido ao crescimento mais lento e necessidades específicas.'
-        },
-        'amazonian': {
-            title: 'Amazonian',
-            description: 'Variedade robusta originária da região amazônica.',
-            characteristics: [
-                'Crescimento vigoroso',
-                'Resistente a altas temperaturas',
-                'Chapéus grandes e carnudos',
-                'Hastes grossas e robustas'
-            ],
-            potency: 'Moderada-Alta (0.71-0.95% psilocibina)',
-            difficulty: 'Moderado',
-            origin: 'Bacia Amazônica',
-            details: 'Adaptada ao clima tropical, esta variedade é conhecida por sua robustez e capacidade de crescer em condições mais quentes que outras variedades.'
-        }
-    };
 
-    const strain = strainData[strainType];
-    if (!strain) return;
-
-    modalBody.innerHTML = `
-        <h2>${strain.title}</h2>
-        <p class="strain-description">${strain.description}</p>
-        
-        <div class="strain-details">
-            <div class="detail-section">
-                <h3>Características</h3>
-                <ul>
-                    ${strain.characteristics.map(char => `<li>${char}</li>`).join('')}
-                </ul>
-            </div>
-            
-            <div class="detail-grid">
-                <div class="detail-item">
-                    <strong>Potência:</strong> ${strain.potency}
-                </div>
-                <div class="detail-item">
-                    <strong>Dificuldade:</strong> ${strain.difficulty}
-                </div>
-                <div class="detail-item">
-                    <strong>Origem:</strong> ${strain.origin}
-                </div>
-            </div>
-            
-            <div class="detail-section">
-                <h3>Detalhes</h3>
-                <p>${strain.details}</p>
-            </div>
-        </div>
-        
-        <div class="modal-warning">
-            <i class="fas fa-exclamation-triangle"></i>
-            <p>Informações apenas para fins educacionais. O cultivo e uso podem ser ilegais em sua jurisdição.</p>
-        </div>
-    `;
-
-    modal.style.display = 'block';
-}
 
 // Smooth scrolling for anchor links
 function initSmoothScrolling() {

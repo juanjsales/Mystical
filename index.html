@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Psilocybe Cubensis - Guia Educacional</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -26,9 +26,7 @@
                 <li class="nav-item">
                     <a href="#effects" class="nav-link">Efeitos</a>
                 </li>
-                <li class="nav-item">
-                    <a href="#strains" class="nav-link">Variedades</a>
-                </li>
+
                 <li class="nav-item">
                     <a href="#cultivation" class="nav-link">Cultivo</a>
                 </li>
@@ -167,77 +165,7 @@
         </div>
     </section>
 
-    <!-- Strains Section -->
-    <section id="strains" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Variedades de P. Cubensis</h2>
-                <p class="section-subtitle">Explorando as diferentes cepas e suas características únicas</p>
-            </div>
-            <div class="strains-grid">
-                <div class="strain-card" data-strain="golden-teacher">
-                    <div class="strain-image">
-                        <div class="strain-placeholder">
-                            <i class="fas fa-seedling"></i>
-                        </div>
-                    </div>
-                    <div class="strain-info">
-                        <h3>Golden Teacher</h3>
-                        <p>Uma das variedades mais populares, conhecida por seus chapéus dourados e efeitos equilibrados.</p>
-                        <div class="strain-characteristics">
-                            <span class="characteristic">Potência: Moderada</span>
-                            <span class="characteristic">Crescimento: Fácil</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="strain-card" data-strain="b-plus">
-                    <div class="strain-image">
-                        <div class="strain-placeholder">
-                            <i class="fas fa-seedling"></i>
-                        </div>
-                    </div>
-                    <div class="strain-info">
-                        <h3>B+ (Be Positive)</h3>
-                        <p>Variedade robusta e resistente, ideal para iniciantes no cultivo.</p>
-                        <div class="strain-characteristics">
-                            <span class="characteristic">Potência: Moderada</span>
-                            <span class="characteristic">Crescimento: Muito Fácil</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="strain-card" data-strain="penis-envy">
-                    <div class="strain-image">
-                        <div class="strain-placeholder">
-                            <i class="fas fa-seedling"></i>
-                        </div>
-                    </div>
-                    <div class="strain-info">
-                        <h3>Penis Envy</h3>
-                        <p>Variedade distintiva com formato único e alta concentração de compostos ativos.</p>
-                        <div class="strain-characteristics">
-                            <span class="characteristic">Potência: Alta</span>
-                            <span class="characteristic">Crescimento: Difícil</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="strain-card" data-strain="amazonian">
-                    <div class="strain-image">
-                        <div class="strain-placeholder">
-                            <i class="fas fa-seedling"></i>
-                        </div>
-                    </div>
-                    <div class="strain-info">
-                        <h3>Amazonian</h3>
-                        <p>Originária da região amazônica, conhecida por seu crescimento vigoroso.</p>
-                        <div class="strain-characteristics">
-                            <span class="characteristic">Potência: Moderada-Alta</span>
-                            <span class="characteristic">Crescimento: Moderado</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Cultivation Section -->
     <section id="cultivation" class="section section-dark">
@@ -289,6 +217,12 @@
                             <span>Luz: Indireta</span>
                         </div>
                     </div>
+                </div>
+                <div class="cultivation-details-button">
+                    <button class="btn btn-primary" id="cultivation-details-btn">
+                        <i class="fas fa-seedling"></i>
+                        Ver Detalhes Completos de Cultivo
+                    </button>
                 </div>
             </div>
         </div>
@@ -395,6 +329,16 @@
     </footer>
 
     <!-- Modal -->
+    <div class="modal" id="cultivation-modal">
+        <div class="modal-content">
+            <span class="close" id="cultivation-close">&times;</span>
+            <div class="modal-body" id="cultivation-modal-body">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
     <div class="modal" id="strain-modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -404,8 +348,8 @@
         </div>
     </div>
 
-    <script src="main.js"></script>
-    <script src="quiz.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/quiz.js"></script>
 </body>
 </html>
 
